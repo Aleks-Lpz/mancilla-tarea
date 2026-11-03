@@ -57,3 +57,12 @@ Good, porque aísla al sistema central de los fallos de terceros y asegura la co
 Bad, porque agrega sobrecarga operacional y mayor complejidad en la gestión de estados y tareas asíncronas.
 
 More Information
+
+
+Revisión 1. Cambio en el proveedor de notificaciones
+
+Cambio recibido: El proveedor externo de notificaciones modifica su interfaz de comunicación, alterando la estructura de las peticiones y los códigos de error con los que reporta los fallos de envío.
+Impacto sobre la alternativa seleccionada: El impacto se confina de manera estricta al adaptador de integración dentro del componente procesador independiente, evitando cualquier modificación o riesgo en el flujo central de generación y almacenamiento de constancias.
+Vigencia de la decisión: La decisión original (Alternativa B) se mantiene, ya que el desacoplamiento estructural basado en eventos persistidos aísla eficazmente al núcleo del sistema frente a cambios en contratos de terceros.
+Riesgo o consecuencia a revisar: Se incrementa ligeramente el acoplamiento con el contrato del proveedor en la capa del adaptador, requiriendo pruebas de integración específicas para dicha interfaz.
+Comprobación actualizada: Se incorpora en la sección de `Confirmation` la validación mediante pruebas de contrato y adaptador para asegurar que las nuevas respuestas de error del proveedor se mapean correctamente hacia los estados de reintento.
